@@ -2,7 +2,29 @@ import math
 import Queue as Q
 import state
 import problem
+import sys
     
+"""
+this puzzle counts the inversions to see if the puzzle is solvable
+if there are an odd number of inversions the puzzle 
+"""
+def is_solvable(puzzle):      
+    num_inversions = 0
+    i = 0
+    for i in range(len(puzzle)):
+        if(puzzle[i] == 0):
+            i += 1
+            continue
+        for j in range(i+1, len(puzzle)):
+            if(puzzle[j] == 0):
+                j += 1
+                continue
+            if(puzzle[i] > puzzle[j]):
+                num_inversions += 1          
+    if(num_inversions%2 == 0):
+        return True
+    else:
+        return False    
 
 print "Welcome to 861168574's 8-puzzle solver."
 print "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle."
@@ -38,8 +60,11 @@ print "\t 1. Uniform Cost Search"
 print "\t 2. A* with misplaced tile heuristic"
 print "\t 3. A* with Manhattan distance heuristic"
 
+if(is_solvable(puzzle) == False):                   #checks if the puzzle is solvable
+    print "puzzle is not solvable, odd number of inversions"
+    sys.exit()
+    
 h_type = input()
-
 
 if(h_type == 1):                                    #if the problem is ucs h(n) = 0
     h_cost = 0

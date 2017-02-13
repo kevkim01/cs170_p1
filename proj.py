@@ -60,11 +60,11 @@ print "\t 1. Uniform Cost Search"
 print "\t 2. A* with misplaced tile heuristic"
 print "\t 3. A* with Manhattan distance heuristic"
 
+h_type = input()
+
 if(is_solvable(puzzle) == False):                   #checks if the puzzle is solvable
     print "puzzle is not solvable, odd number of inversions"
     sys.exit()
-    
-h_type = input()
 
 if(h_type == 1):                                    #if the problem is ucs h(n) = 0
     h_cost = 0

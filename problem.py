@@ -2,12 +2,6 @@ import math
 import Queue as Q
 import state
 
-class P_queue():
-    def __init__(self):
-        arr = []
-    
-
-
 class Problem():
     def __init__(self, init_state):
         self.init_state = init_state                                    #State object
